@@ -29,21 +29,14 @@ export default function PaymentPage() {
 
   useEffect(() => {
     if (sessionId) {
-      new window.Reepay.EmbeddedCheckout(sessionId, {
-        html_element: "rp_container",
-        showReceipt: false,
-      });
+      new window.Reepay.WindowCheckout(sessionId);
     }
   }, [sessionId]);
 
   return (
     <>
       <div className="flex flex-col w-full h-full max-w-[640px] mx-auto justify-center items-center">
-        {!sessionId ? (
-          <div>Loading...</div>
-        ) : (
-          <div id="rp_container" className="w-full h-full"></div>
-        )}
+        {!sessionId && <div>Loading...</div>}
       </div>
       <Script
         src="https://checkout.reepay.com/checkout.js"
