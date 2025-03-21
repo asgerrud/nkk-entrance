@@ -18,8 +18,8 @@ export async function POST() {
           first_name: "John",
           last_name: "Doe",
         },
-        accept_url: "localhost:3000/accept/order-12345",
-        cancel_url: "localhost:3000/decline/order-12345",
+        accept_url: "https://sandbox.reepay.com/api/echo?accept=true",
+        cancel_url: "https://sandbox.reepay.com/api/echo?accept=false",
       },
     }),
   };
