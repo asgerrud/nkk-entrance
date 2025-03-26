@@ -9,26 +9,22 @@ export async function POST() {
     },
     body: JSON.stringify({
       order: {
-        handle: "order-12345",
-        amount: 10000,
+        handle: `order-${Date.now()}`,
+        amount: 5000,
         currency: "DKK",
         customer: {
           email: "customer@example.com",
-          handle: "c-0212",
-          first_name: "John",
-          last_name: "Doe",
+          handle: "c-0000",
+          first_name: "Guest",
+          last_name: "Climber",
         },
-        accept_url: "https://sandbox.reepay.com/api/echo?accept=true",
-        cancel_url: "https://sandbox.reepay.com/api/echo?accept=false",
       },
+      accept_url: "https://sandbox.reepay.com/api/echo?accept=true",
+      cancel_url: "https://sandbox.reepay.com/api/echo?accept=false",
     }),
   };
 
   const response = await fetch(options.url, options);
-
-  if (!response.ok) {
-    throw new Error("Failed to create Checkout session:" + response.status);
-  }
 
   const data = await response.json();
 
