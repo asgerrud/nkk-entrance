@@ -19,8 +19,7 @@ export async function POST() {
           last_name: "Climber",
         },
       },
-      accept_url: "https://sandbox.reepay.com/api/echo?accept=true",
-      cancel_url: "https://sandbox.reepay.com/api/echo?accept=false",
+      accept_url: `${process.env.URL}ticket`,
     }),
   };
 
