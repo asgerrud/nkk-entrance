@@ -1,4 +1,4 @@
-import { displayClosingTime } from "@/utils/DateUtil";
+import { displayGuestClosingTime } from "@/utils/DateUtil";
 
 interface GuestAccessUIProps {
   onClick: () => Promise<void>;
@@ -12,7 +12,7 @@ export default function GuestAccess({ onClick, loading }: GuestAccessUIProps) {
         {loading ? "Loading..." : "Get entrance ticket"}
       </button>
 
-      <div>NKK is open for guests until {displayClosingTime()} today</div>
+      <div>NKK is open for guests until {displayGuestClosingTime()} today</div>
     </div>
   );
 }

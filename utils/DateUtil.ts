@@ -21,6 +21,10 @@ export const displayWeekdayPeakHours = () => {
   return `${peakStart} - ${peakEnd}`;
 };
 
-export const displayClosingTime = () => {
+export const displayGuestClosingTime = () => {
   return GUEST_OPENING_HOURS[dayjs().day()].close;
+};
+
+export const displayMemberClosingTime = () => {
+  return MEMBER_OPENING_HOURS[dayjs().day()].close;
 };

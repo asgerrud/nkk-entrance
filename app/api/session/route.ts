@@ -1,4 +1,11 @@
-export async function POST() {
+import { CreateSession } from "@/types/interfaces/CreateSession";
+import { TicketType } from "@/types/enums/TicketType";
+
+export async function POST(req: Request) {
+  const body: CreateSession = await req.json();
+
+  const ticketType = body.isBuddyTicket ? TicketType.BUDDY : TicketType.GUEST;
+
   const options = {
     method: "POST",
     url: "https://checkout-api.reepay.com/v1/session/charge",
@@ -9,11 +16,10 @@ export async function POST() {
     },
     body: JSON.stringify({
       order: {
-        handle: `order-${Date.now()}`,
+        handle: `${ticketType}-${Date.now()}`,
         amount: 5000,
         currency: "DKK",
         customer: {
-          email: "customer@example.com",
           handle: "c-0000",
           first_name: "Guest",
           last_name: "Climber",

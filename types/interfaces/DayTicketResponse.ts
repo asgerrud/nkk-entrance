@@ -1,7 +1,7 @@
 export interface DayTicketResponse {
   dayticket_id: number;
   qr_code: string;
-  detail: {
+  detail?: {
     reason: string;
   };
 }
