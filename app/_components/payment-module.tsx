@@ -2,6 +2,9 @@
 
 import Script from "next/script";
 import { useState } from "react";
+import GuestAccess from "@/app/_components/guest-access";
+import BuddySystemAccess from "@/app/_components/buddy-system-access";
+import { isInsideGuestHours } from "@/utils/DateUtil";
 
 export default function PaymentModule() {
   const [isLoading, setLoading] = useState(false);
@@ -26,12 +29,14 @@ export default function PaymentModule() {
 
   return (
     <>
-      <button
-        className="rounded-md bg-black w-[300px] p-4 text-white uppercase font-bold tracking-wider cursor-pointer hover:bg-[#231f21] transition"
-        onClick={() => createSession()}
-      >
-        {isLoading ? "Loading..." : "Get entrance ticket"}
-      </button>
+      <div className="text-center">
+        {isInsideGuestHours() ? (
+          <GuestAccess onClick={() => createSession()} loading={isLoading} />
+        ) : (
+          <BuddySystemAccess onConfirm={() => createSession()} />
+        )}
+      </div>
+
       <Script
         src="https://checkout.reepay.com/checkout.js"
         strategy="beforeInteractive"

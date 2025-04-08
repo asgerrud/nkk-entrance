@@ -3,3 +3,11 @@
 * {
     box-sizing: border-box;
 }
+
+.btn-primary {
+    @apply bg-black text-white hover:bg-[#231f21] rounded-md w-[300px] p-4 uppercase font-bold cursor-pointer tracking-wider transition;
+}
+
+.btn-link {
+    @apply font-medium text-blue-700 cursor-pointer hover:underline transition;
+}
