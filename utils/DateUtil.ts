@@ -1,8 +1,11 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+
 import { GUEST_OPENING_HOURS, MEMBER_OPENING_HOURS } from "@/types/constants";
 
 dayjs.extend(utc);
+dayjs.extend(customParseFormat);
 
 export const isInsideGuestHours = () => {
   const currentTime = dayjs().utc(true);
