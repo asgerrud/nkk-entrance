@@ -35,7 +35,7 @@ export default async function TicketPage({
     method: "GET",
   });
 
-  if (!res.ok) {
+  if (res.ok) {
     return (
       <div className="font-mono">
         Failed to create QR code. The entrance system may be down. Please
@@ -56,7 +56,7 @@ export default async function TicketPage({
       {ticketType === TicketType.GUEST ? (
         <>
           <QRCode className="my-10" size={256} value={qrCode.qr_code} />
-          <p className="font-medium max-w-[300px]">
+          <p className="font-medium max-w-sm">
             Scan this QR code at the scanner to get access to the gym
           </p>
         </>

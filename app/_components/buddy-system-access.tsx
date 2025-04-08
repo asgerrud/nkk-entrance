@@ -11,7 +11,7 @@ export default function BuddySystemAccess({
   const [hasUserConfirmed, setUserConfirmed] = useState(false);
 
   return (
-    <div className="space-y-5 max-w-[350px]">
+    <div className="space-y-5 max-w-sm">
       {!hasUserConfirmed ? (
         <>
           <p>
