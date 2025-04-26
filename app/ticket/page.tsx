@@ -31,11 +31,11 @@ export default async function TicketPage({
 
   // TODO: Ensure purchased ticket only lasts day of purchase
 
-  const res = await fetch(process.env.URL + "api/dayticket", {
+  const res: Response = await fetch(process.env.URL + "api/dayticket", {
     method: "GET",
   });
 
-  if (res.ok) {
+  if (!res.ok) {
     return (
       <div className="font-mono">
         Failed to create QR code. The entrance system may be down. Please

@@ -26,7 +26,7 @@ function OpeningHourDisclaimer() {
   return (
     <div className="text-xs italic space-y-2">
       <p>
-        Opening hours may differ around holidays. Please check
+        *Opening hours may differ around holidays. Please check
         Nørrebrohallen&apos;s{"  "}
         <a
           className="btn-link"
@@ -36,7 +36,7 @@ function OpeningHourDisclaimer() {
         </a>
       </p>
       <p>
-        There might be events planned in the gym, please check the{" "}
+        **There might be events planned in the gym, please check the{" "}
         <a
           className="btn-link"
           href="https://nkk.klub-modul.dk/cms/Activity.aspx"
