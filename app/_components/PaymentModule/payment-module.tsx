@@ -74,7 +74,7 @@ export default function PaymentModule() {
 
       <Script
         src="https://checkout.reepay.com/checkout.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
     </>
   );
