@@ -1,5 +1,6 @@
 import PaymentModule from "@/app/_components/PaymentModule/payment-module";
 import Logo from "./_components/logo";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -9,7 +10,9 @@ export default function Home() {
           <Logo />
         </div>
 
-        <PaymentModule />
+        <Suspense fallback={<div>Loading...</div>}>
+          <PaymentModule />
+        </Suspense>
       </div>
     </main>
   );
