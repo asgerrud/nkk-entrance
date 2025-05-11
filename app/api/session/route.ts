@@ -6,6 +6,8 @@ export async function POST(req: Request) {
 
   const ticketType = body.isBuddyTicket ? TicketType.BUDDY : TicketType.GUEST;
 
+  // TODO: create test-session when running E2E test
+
   const options = {
     method: "POST",
     url: "https://checkout-api.reepay.com/v1/session/charge",

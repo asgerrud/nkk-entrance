@@ -1,4 +1,3 @@
-import QRCode from "react-qr-code";
 import { redirect } from "next/navigation";
 import { DayTicketResponse } from "@/types/interfaces/DayTicketResponse";
 import {
@@ -6,11 +5,13 @@ import {
   displayMemberClosingTime,
 } from "@/utils/DateUtil";
 import { TicketType } from "@/types/enums/TicketType";
+import TicketConfirmationQR from "@/app/ticket/_components/ticket-confirmation-qr";
+import TicketConfirmationReceipt from "@/app/ticket/_components/ticket-confirmation-receipt";
 
 export default async function TicketPage({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<Record<string, string>>;
 }) {
   const { id, invoice } = await searchParams;
 
@@ -50,27 +51,9 @@ export default async function TicketPage({
       <p className="font-bold mb-3">Here is your day ticket for NKK</p>
       <p>Valid until {closingTime} today</p>
       {ticketType === TicketType.GUEST ? (
-        <>
-          <QRCode
-            className="my-10"
-            size={256}
-            value={qrCode.qr_code}
-            data-testid="day-ticket-qr-code"
-          />
-          <p className="font-medium max-w-sm">
-            Scan this QR code at the scanner to get access to the gym
-          </p>
-        </>
+        <TicketConfirmationQR qrCode={qrCode.qr_code} />
       ) : (
-        <>
-          <div className="my-10 font-medium max-w-lg rounded-md bg-gray-100 p-5">
-            Show this confirmation to your friend / NKK member to get access to
-            the climbing area
-          </div>
-          <small className="font-mono text-gray-600">
-            Ticket id: {invoice}
-          </small>
-        </>
+        <TicketConfirmationReceipt invoice={invoice} />
       )}
     </div>
   );
