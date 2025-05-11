@@ -15,10 +15,8 @@ export default async function TicketPage({
   const { id, invoice } = await searchParams;
 
   if (!id || !invoice) {
-    redirect(process.env.URL!);
+    redirect(process.env.BASE_URL!);
   }
-
-  // TODO: add expiration screen
 
   const ticketType = (invoice as string).startsWith(TicketType.GUEST)
     ? TicketType.GUEST
@@ -29,9 +27,7 @@ export default async function TicketPage({
       ? displayGuestClosingTime()
       : displayMemberClosingTime();
 
-  // TODO: Ensure purchased ticket only lasts day of purchase
-
-  const res: Response = await fetch(process.env.URL + "api/dayticket", {
+  const res: Response = await fetch(process.env.BASE_URL + "api/dayticket", {
     method: "GET",
   });
 
@@ -55,7 +51,12 @@ export default async function TicketPage({
       <p>Valid until {closingTime} today</p>
       {ticketType === TicketType.GUEST ? (
         <>
-          <QRCode className="my-10" size={256} value={qrCode.qr_code} />
+          <QRCode
+            className="my-10"
+            size={256}
+            value={qrCode.qr_code}
+            data-testid="day-ticket-qr-code"
+          />
           <p className="font-medium max-w-sm">
             Scan this QR code at the scanner to get access to the gym
           </p>

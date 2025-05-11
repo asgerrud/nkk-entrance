@@ -7,8 +7,12 @@ interface GuestAccessUIProps {
 
 export default function GuestAccess({ onClick, loading }: GuestAccessUIProps) {
   return (
-    <div className="space-y-8">
-      <button className="btn-primary" onClick={onClick}>
+    <div className="space-y-8" data-testid="guest-access">
+      <button
+        className="btn-primary"
+        onClick={onClick}
+        data-testid="get-ticket-button"
+      >
         {loading ? "Loading..." : "Get entrance ticket"}
       </button>
 

@@ -6,9 +6,12 @@ import GuestAccess from "@/app/_components/PaymentModule/GuestAccess/guest-acces
 import BuddySystemAccess from "@/app/_components/PaymentModule/BuddySystemAccess/buddy-system-access";
 import { isInsideGuestHours } from "@/utils/DateUtil";
 import { CreateSession } from "@/types/interfaces/CreateSession";
+import { useSearchParams } from "next/navigation";
 
 export default function PaymentModule() {
   const [isLoading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const timeParam = searchParams.get("pw_time") ?? undefined;
 
   const checkSystemStatus = async () => {
     const statusRes = await fetch("./api/health", {
@@ -59,7 +62,7 @@ export default function PaymentModule() {
   return (
     <>
       <div className="text-center">
-        {isInsideGuestHours() ? (
+        {isInsideGuestHours(timeParam) ? (
           <GuestAccess
             onClick={() => createSession(false)}
             loading={isLoading}

@@ -15,6 +15,7 @@ export async function POST(req: Request) {
       accept: "application/json",
     },
     body: JSON.stringify({
+      locale: "en_GB",
       order: {
         handle: `${ticketType}-${Date.now()}`,
         amount: 5000,
@@ -25,7 +26,7 @@ export async function POST(req: Request) {
           last_name: "Climber",
         },
       },
-      accept_url: `${process.env.URL}ticket`,
+      accept_url: `${process.env.BASE_URL}ticket`,
     }),
   };
 
