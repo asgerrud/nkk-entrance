@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NKK Dørsystem",
+  title: "NKK Entrance System",
   description: "Web app for issuing guest tickets for Nørrebro Klatreklub",
 };
 

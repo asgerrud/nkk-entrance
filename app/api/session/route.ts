@@ -6,6 +6,8 @@ export async function POST(req: Request) {
 
   const ticketType = body.isBuddyTicket ? TicketType.BUDDY : TicketType.GUEST;
 
+  // TODO: create test-session when running E2E test
+
   const options = {
     method: "POST",
     url: "https://checkout-api.reepay.com/v1/session/charge",
@@ -15,6 +17,7 @@ export async function POST(req: Request) {
       accept: "application/json",
     },
     body: JSON.stringify({
+      locale: "en_GB",
       order: {
         handle: `${ticketType}-${Date.now()}`,
         amount: 5000,
@@ -25,7 +28,7 @@ export async function POST(req: Request) {
           last_name: "Climber",
         },
       },
-      accept_url: `${process.env.URL}ticket`,
+      accept_url: `${process.env.BASE_URL}ticket`,
     }),
   };
 
