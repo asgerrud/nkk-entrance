@@ -2,8 +2,8 @@
 
 import Script from "next/script";
 import { useState } from "react";
-import GuestAccess from "@/app/_components/guest-access";
-import BuddySystemAccess from "@/app/_components/buddy-system-access";
+import GuestAccess from "@/app/_components/PaymentModule/GuestAccess/guest-access";
+import BuddySystemAccess from "@/app/_components/PaymentModule/BuddySystemAccess/buddy-system-access";
 import { isInsideGuestHours } from "@/utils/DateUtil";
 import { CreateSession } from "@/types/interfaces/CreateSession";
 

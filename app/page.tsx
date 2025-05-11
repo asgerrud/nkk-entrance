@@ -1,4 +1,4 @@
-import PaymentModule from "@/app/_components/payment-module";
+import PaymentModule from "@/app/_components/PaymentModule/payment-module";
 import Logo from "./_components/logo";
 
 export default function Home() {
