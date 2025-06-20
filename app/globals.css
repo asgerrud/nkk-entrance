@@ -2,12 +2,14 @@
 
 * {
     box-sizing: border-box;
+    font-family: 'Verdana', sans-serif;
 }
 
+
 .btn-primary {
-    @apply bg-black text-white hover:bg-[#231f21] rounded-md w-[300px] p-4 uppercase font-bold cursor-pointer tracking-wider transition;
+    @apply bg-blue-700 hover:bg-blue-800 text-white rounded-md p-3 font-bold cursor-pointer tracking-wider transition;
 }
 
 .btn-link {
-    @apply font-medium text-blue-700 cursor-pointer hover:underline transition;
+    @apply text-blue-700 hover:text-blue-800 font-bold cursor-pointer transition;
 }
