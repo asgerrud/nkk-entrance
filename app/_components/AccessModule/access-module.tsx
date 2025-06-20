@@ -2,14 +2,16 @@
 
 import Script from "next/script";
 import { useState } from "react";
-import GuestAccess from "@/app/_components/PaymentModule/GuestAccess/guest-access";
-import BuddySystemAccess from "@/app/_components/PaymentModule/BuddySystemAccess/buddy-system-access";
 import { isInsideGuestHours } from "@/utils/DateUtil";
 import { CreateSession } from "@/types/interfaces/CreateSession";
 import { useSearchParams } from "next/navigation";
+import { TicketType } from "@/types/enums/TicketType";
+import GuestAccess from "@/app/_components/AccessModule/GuestAccess/guest-access";
+import BuddySystemAccess from "@/app/_components/AccessModule/BuddySystemAccess/buddy-system-access";
 
-export default function PaymentModule() {
+export default function AccessModule() {
   const [isLoading, setLoading] = useState(false);
+
   const searchParams = useSearchParams();
   const timeParam = searchParams.get("pw_time") ?? undefined;
 
@@ -28,12 +30,12 @@ export default function PaymentModule() {
     return true;
   };
 
-  const createSession = async (isBuddyTicket: boolean) => {
+  const createSession = async (ticketType: TicketType) => {
     setLoading(true);
 
     if (await checkSystemStatus()) {
       const payload: CreateSession = {
-        isBuddyTicket: isBuddyTicket,
+        isBuddyTicket: ticketType === TicketType.BUDDY,
       };
 
       const res = await fetch("./api/session", {
@@ -52,7 +54,6 @@ export default function PaymentModule() {
 
       const id = session?.id;
 
-      // Open Checkout Window
       new window.Reepay.WindowCheckout(id);
     }
 
@@ -61,14 +62,11 @@ export default function PaymentModule() {
 
   return (
     <>
-      <div className="text-center">
+      <div className="flex w-full h-full justify-center text-center">
         {isInsideGuestHours(timeParam) ? (
-          <GuestAccess
-            onClick={() => createSession(false)}
-            loading={isLoading}
-          />
+          <GuestAccess loading={isLoading} onRequestTicket={createSession} />
         ) : (
-          <BuddySystemAccess onConfirm={() => createSession(true)} />
+          <BuddySystemAccess onRequestTicket={createSession} />
         )}
       </div>
 
