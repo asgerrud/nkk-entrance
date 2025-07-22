@@ -11,7 +11,7 @@ export default function TicketConfirmationQR({
     <>
       <QRCode
         className="my-10"
-        size={256}
+        size={200}
         value={qrCode}
         data-testid="day-ticket-qr-code"
       />
