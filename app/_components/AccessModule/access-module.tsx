@@ -70,10 +70,6 @@ export default function AccessModule() {
         )}
       </div>
 
-      <a className="btn-link hover:underline" href="/terms-and-conditions">
-        Terms and Conditions
-      </a>
-
       <Script
         src="https://checkout.reepay.com/checkout.js"
         strategy="afterInteractive"

@@ -47,7 +47,7 @@ export default async function TicketPage({
   const qrCode: DayTicketResponse = await res.json();
 
   return (
-    <div className="flex flex-col justify-center items-center h-full text-xl text-center">
+    <div className="flex flex-col justify-center items-center w-full h-full text-xl text-center">
       <p className="font-bold mb-3">Here is your day ticket for NKK</p>
       <p>Valid until {closingTime} today</p>
       {ticketType === TicketType.GUEST ? (

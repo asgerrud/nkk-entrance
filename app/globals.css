@@ -5,6 +5,10 @@
     font-family: 'Verdana', sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
+
 
 .btn-primary {
     @apply bg-blue-700 hover:bg-blue-800 text-white rounded-md p-3 font-bold cursor-pointer tracking-wider transition;
