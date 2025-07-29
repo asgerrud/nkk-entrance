@@ -29,7 +29,7 @@ export default function RootLayout({
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen p-8 m-0 overflow-hidden box-border`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex w-screen h-full p-8 m-0 box-border`}
       >
         {children}
       </body>
