@@ -25,9 +25,10 @@ export default function TermsAndConditionsPage() {
         <p>
           Peak-hours (hverdage kl. 15:00 - luk)
           <br />
-          Adgang kræver, at du er ledsaget af et aktivt NKK-medlem ("buddy").
-          Din buddy skal være til stede under hele dit besøg og købe billetten
-          via QR-koden på døren. Prisen er 50 kr. pr. gæst.
+          Adgang kræver, at du er ledsaget af et aktivt NKK-medlem
+          (&quot;buddy&quot;). Din buddy skal være til stede under hele dit
+          besøg og købe billetten via QR-koden på døren. Prisen er 50 kr. pr.
+          gæst.
           <br />
           OBS: Der er ingen adgang uden buddy i peak-hours - undlad venligst at
           ringe på døren
