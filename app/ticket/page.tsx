@@ -3,10 +3,12 @@ import { DayTicketResponse } from "@/types/interfaces/DayTicketResponse";
 import {
   displayGuestClosingTime,
   displayMemberClosingTime,
+  isTicketFromToday,
 } from "@/utils/DateUtil";
 import { TicketType } from "@/types/enums/TicketType";
 import TicketConfirmationQR from "@/app/ticket/_components/ticket-confirmation-qr";
 import TicketConfirmationReceipt from "@/app/ticket/_components/ticket-confirmation-receipt";
+import TicketNotValid from "@/app/ticket/_components/ticket-not-valid";
 
 export default async function TicketPage({
   searchParams,
@@ -27,6 +29,14 @@ export default async function TicketPage({
     ticketType === TicketType.GUEST
       ? displayGuestClosingTime()
       : displayMemberClosingTime();
+
+  if (!isTicketFromToday(invoice)) {
+    return (
+      <div className="flex flex-col justify-center items-center w-full h-full text-xl text-center">
+        <TicketNotValid invoice={invoice} />
+      </div>
+    );
+  }
 
   const res: Response = await fetch(process.env.BASE_URL + "api/dayticket", {
     method: "GET",
