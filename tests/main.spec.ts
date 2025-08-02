@@ -36,6 +36,55 @@ test("Show ticket receipt after purchase outside guest hours", async ({
   await expect(page.getByTestId("ticket-id")).toContainText(TicketType.BUDDY);
 });
 
+test("Show purchased ticket prompt when ticket is valid", async ({ page }) => {
+  const homePageUrl = "http://localhost:3000?pw_time=2025-11-05T12:00Z";
+
+  await page.goto(
+    `http://localhost:3000/ticket?id=cs_example&invoice=guest-ticket-${Date.now()}`,
+  );
+  await page.goto(homePageUrl);
+
+  const purchasedTicketPrompt = page.getByTestId("purchased-ticket-prompt");
+  await expect(purchasedTicketPrompt).toBeVisible();
+
+  const viewTicketButton =
+    purchasedTicketPrompt.getByTestId("view-ticket-button");
+  await expect(viewTicketButton).toBeVisible();
+  await viewTicketButton.click();
+
+  const qrCode = page.getByTestId("day-ticket-qr-code");
+  await expect(qrCode).toBeVisible();
+
+  await page.goto(homePageUrl);
+  await expect(purchasedTicketPrompt).toBeVisible();
+
+  const closeButton = purchasedTicketPrompt.getByTestId(
+    "buy-another-ticket-button",
+  );
+  await expect(closeButton).toBeVisible();
+  await closeButton.click();
+
+  const guestAccess = page.getByTestId("guest-access");
+  await expect(guestAccess).toBeVisible();
+  await expect(purchasedTicketPrompt).not.toBeVisible();
+
+  await page.reload();
+
+  await expect(purchasedTicketPrompt).toBeVisible();
+});
+
+test("Don't show purchased ticket prompt when ticket is expired", async ({
+  page,
+}) => {
+  await page.goto(
+    "http://localhost:3000/ticket?id=cs_example&invoice=guest-ticket-1700000000000",
+  );
+  await page.goto("http://localhost:3000?pw_time=2025-11-05T20:00Z");
+
+  const purchasedTicketPrompt = page.getByTestId("purchased-ticket-prompt");
+  await expect(purchasedTicketPrompt).not.toBeVisible();
+});
+
 test("Show invalid ticket message when viewing expired ticket", async ({
   page,
 }) => {
