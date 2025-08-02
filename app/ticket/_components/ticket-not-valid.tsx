@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { clearSavedTicket } from '@/utils/ticketStorage';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { clearSavedTicket } from "@/utils/ticketStorage";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 interface TicketNotValidProps {
   invoice: string;
@@ -16,12 +16,15 @@ export default function TicketNotValid({ invoice }: TicketNotValidProps) {
   }, []);
 
   const goToHomeScreen = () => {
-    router.push('/');
+    router.push("/");
   };
 
   return (
     <>
-      <div className="flex flex-col items-center p-5 my-5 font-medium max-w-lg rounded-md bg-red-200">
+      <div
+        className="flex flex-col items-center p-5 my-5 font-medium max-w-lg rounded-md bg-red-200"
+        data-testid="ticket-not-valid-message"
+      >
         <p className="mt-2">
           The ticket is no longer valid. Please purchase a new one
         </p>

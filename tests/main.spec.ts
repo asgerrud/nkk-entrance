@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import { TicketType } from "@/types/enums/TicketType";
 import { payTicketWithCard } from "./utils/frisbii.util";
 
-test("show guess access within guest hours", async ({ page }) => {
+test("Show QR code after purchase within guest hours", async ({ page }) => {
   await page.goto("http://localhost:3000?pw_time=2025-11-05T12:00Z");
 
   const guestAccess = await page.getByTestId("guest-access");
@@ -17,7 +17,9 @@ test("show guess access within guest hours", async ({ page }) => {
   await expect(qrCode).toBeVisible();
 });
 
-test("show buddy system outside guest hours", async ({ page }) => {
+test("Show ticket receipt after purchase outside guest hours", async ({
+  page,
+}) => {
   await page.goto("http://localhost:3000?pw_time=2025-11-05T20:00Z");
 
   const buddySystem = page.getByTestId("buddy-system");
@@ -32,6 +34,17 @@ test("show buddy system outside guest hours", async ({ page }) => {
   await expect(receiptText).toBeVisible();
 
   await expect(page.getByTestId("ticket-id")).toContainText(TicketType.BUDDY);
+});
+
+test("Show invalid ticket message when viewing expired ticket", async ({
+  page,
+}) => {
+  await page.goto(
+    "http://localhost:3000/ticket?id=cs_example&invoice=guest-ticket-1700000000000",
+  );
+
+  const expiredTicket = page.getByTestId("ticket-not-valid-message");
+  await expect(expiredTicket).toBeVisible();
 });
 
 test("show terms and conditions", async ({ page }) => {
