@@ -17,3 +17,5 @@ export const GUEST_OPENING_HOURS = [
   { open: "07:00", close: "15:00" }, // Friday
   { open: "09:00", close: "21:00" }, // Saturday
 ];
+
+export const TICKET_STORAGE_KEY = 'nkk_ticket';

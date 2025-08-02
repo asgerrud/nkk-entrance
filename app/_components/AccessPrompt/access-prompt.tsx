@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import Script from "next/script";
-import { useState } from "react";
-import { isInsideGuestHours } from "@/utils/DateUtil";
-import { CreateSession } from "@/types/interfaces/CreateSession";
-import { useSearchParams } from "next/navigation";
-import { TicketType } from "@/types/enums/TicketType";
-import GuestAccess from "@/app/_components/AccessModule/GuestAccess/guest-access";
-import BuddySystemAccess from "@/app/_components/AccessModule/BuddySystemAccess/buddy-system-access";
+import Script from 'next/script';
+import { useState } from 'react';
+import { isInsideGuestHours } from '@/utils/DateUtil';
+import { CreateSession } from '@/types/interfaces/CreateSession';
+import { useSearchParams } from 'next/navigation';
+import { TicketType } from '@/types/enums/TicketType';
+import GuestAccess from '@/app/_components/AccessPrompt/GuestAccess/guest-access';
+import BuddySystemAccess from '@/app/_components/AccessPrompt/BuddySystemAccess/buddy-system-access';
 
-export default function AccessModule() {
+export default function AccessPrompt() {
   const [isLoading, setLoading] = useState(false);
 
   const searchParams = useSearchParams();
-  const timeParam = searchParams.get("pw_time") ?? undefined;
+  const timeParam = searchParams.get('pw_time') ?? undefined;
 
   const checkSystemStatus = async () => {
-    const statusRes = await fetch("./api/health", {
-      method: "GET",
+    const statusRes = await fetch('./api/health', {
+      method: 'GET',
     });
 
     if (!statusRes.ok) {
       alert(
-        `The entrance system timed out. Please try again later. If the problem persists, please notify ${process.env.NEXT_PUBLIC_CONTACT_MAIL}`,
+        `The entrance system timed out. Please try again later. If the problem persists, please notify ${process.env.NEXT_PUBLIC_CONTACT_MAIL}`
       );
       return false;
     }
@@ -38,8 +38,8 @@ export default function AccessModule() {
         isBuddyTicket: ticketType === TicketType.BUDDY,
       };
 
-      const res = await fetch("./api/session", {
-        method: "POST",
+      const res = await fetch('./api/session', {
+        method: 'POST',
         body: JSON.stringify(payload),
       });
 
@@ -48,7 +48,7 @@ export default function AccessModule() {
       const error = session?.error;
 
       if (error) {
-        alert("Error: " + error);
+        alert('Error: ' + error);
         return;
       }
 

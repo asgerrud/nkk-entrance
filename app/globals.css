@@ -5,13 +5,18 @@
     font-family: 'Verdana', sans-serif;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
 
 .btn-primary {
-    @apply bg-blue-700 hover:bg-blue-800 text-white rounded-md p-3 font-bold cursor-pointer tracking-wider transition;
+    @apply bg-blue-700 hover:bg-blue-800 text-white text-base rounded-md p-3 px-5 font-bold cursor-pointer tracking-wider transition;
+}
+
+.btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-300 text-base rounded-md p-3 px-5 font-bold cursor-pointer tracking-wider transition;
 }
 
 .btn-link {
