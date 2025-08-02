@@ -33,3 +33,14 @@ test("show buddy system outside guest hours", async ({ page }) => {
 
   await expect(page.getByTestId("ticket-id")).toContainText(TicketType.BUDDY);
 });
+
+test("show terms and conditions", async ({ page }) => {
+  await page.goto("http://localhost:3000");
+
+  const termsAndConditionsLink = page.getByTestId("terms-and-conditions-link");
+  await expect(termsAndConditionsLink).toBeVisible();
+  await termsAndConditionsLink.click();
+
+  const termsAndConditionsPage = page.getByTestId("terms-and-conditions-page");
+  await expect(termsAndConditionsPage).toBeVisible();
+});

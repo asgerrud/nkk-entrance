@@ -2,7 +2,10 @@ import { ReactNode } from "react";
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="h-screen m-[-32px] p-8 overflow-y-scroll space-y-8">
+    <div
+      className="h-screen m-[-32px] p-8 overflow-y-scroll space-y-8"
+      data-testid="terms-and-conditions-page"
+    >
       <div>
         <h1 className="text-2xl font-bold mb-4">
           HANDELSBETINGELSER FOR DAGSBILLET TIL NØRREBRO KLATREKLUB (NKK)
