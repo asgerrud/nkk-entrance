@@ -101,5 +101,5 @@ test("Open terms and conditions page on click", async ({ page }) => {
   await expect(termsAndConditionsLink).toBeVisible();
   await termsAndConditionsLink.click();
 
-  await expect(page.getByTestId("terms-and-conditions-page")).toBeVisible();
+  await expect(page).toHaveURL(`${BASE_URL}/terms-and-conditions`);
 });
