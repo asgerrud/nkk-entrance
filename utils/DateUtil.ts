@@ -21,6 +21,14 @@ export const isInsideGuestHours = (date?: string) => {
   return currentTime.isAfter(openTime) && currentTime.isBefore(closeTime);
 };
 
+export const isTicketFromToday = (invoiceId: string) => {
+  const dateString = invoiceId.split("-")[2];
+  const date = dayjs(Number(dateString));
+  const today = dayjs();
+
+  return date.format("YYYY-MM-DD") === today.format("YYYY-MM-DD");
+};
+
 const getTimeAndMinutes = (date: Dayjs, time: string) => {
   const [hours, minutes] = time.split(":").map(Number);
   return date.hour(hours).minute(minutes);
