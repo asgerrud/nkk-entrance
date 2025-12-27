@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { DayTicketResponse } from '@/types/interfaces/DayTicketResponse';
-import { isTicketFromToday } from '@/utils/DateUtil';
+import { isTicketFromToday } from '@/utils/date';
 import TicketNotValid from '@/app/ticket/_components/ticket-not-valid';
 import TicketQrCreationFailedMessage from '@/app/ticket/_components/ticket-qr-creation-failed-message';
 import TicketDetails from './_components/TicketDetails/ticket-details';

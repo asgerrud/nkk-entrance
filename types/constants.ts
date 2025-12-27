@@ -19,3 +19,12 @@ export const GUEST_OPENING_HOURS = [
 ];
 
 export const TICKET_STORAGE_KEY = "nkk_ticket";
+
+export const DAYTICKET_CONFIG = {
+  SECRET: Buffer.from(process.env.DAYTICKET_SECRET ?? ""),
+  NONCE_SIZE: 4,
+  DIGEST_SIZE: 10,
+  USER_ID: 0,
+  TOKEN_TYPE: 3, // DAY_TICKET
+  TOKEN_MEDIA: 1, // PRINT
+}
