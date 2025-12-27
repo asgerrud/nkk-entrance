@@ -2,7 +2,7 @@
 
 import Script from 'next/script';
 import { useState } from 'react';
-import { isInsideGuestHours } from '@/utils/DateUtil';
+import { isInsideGuestHours } from '@/utils/date';
 import { CreateSession } from '@/types/interfaces/CreateSession';
 import { useSearchParams } from 'next/navigation';
 import { TicketType } from '@/types/enums/TicketType';

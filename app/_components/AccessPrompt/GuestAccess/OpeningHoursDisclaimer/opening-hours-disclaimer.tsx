@@ -1,4 +1,4 @@
-import { displayGuestClosingTime } from "@/utils/DateUtil";
+import { displayGuestClosingTime } from '@/utils/date';
 
 export default function OpeningHoursDisclaimer() {
   return (
@@ -9,7 +9,7 @@ export default function OpeningHoursDisclaimer() {
       <div className="text-xs italic space-y-2">
         <p>
           *Opening hours may differ around holidays. Please check
-          Nørrebrohallen&apos;s{"  "}
+          Nørrebrohallen&apos;s{'  '}
           <a
             className="btn-link"
             href="https://kulturogfritidn.kk.dk/huse/noerrebrohallen"
@@ -18,13 +18,13 @@ export default function OpeningHoursDisclaimer() {
           </a>
         </p>
         <p>
-          **There might be events planned in the gym, please check the{" "}
+          **There might be events planned in the gym, please check the{' '}
           <a
             className="btn-link"
             href="https://nkk.klub-modul.dk/cms/Activity.aspx"
           >
             calendar
-          </a>{" "}
+          </a>{' '}
           to see if the gym is open for climbing today
         </p>
       </div>

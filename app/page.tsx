@@ -1,12 +1,12 @@
-"use client";
-import Logo from "./_components/logo";
-import { Suspense, useEffect, useState } from "react";
-import AccessPrompt from "@/app/_components/AccessPrompt/access-prompt";
-import { getPurchasedTicketFromStorage } from "@/utils/ticketStorage";
-import TermsAndConditionsLink from "./_components/terms-and-conditions-link";
-import { useRouter } from "next/navigation";
-import PurchasedTicketPrompt from "./_components/PurchasedTicketPrompt/purchased-ticket-prompt";
-import { isTicketFromToday } from "@/utils/DateUtil";
+'use client';
+import Logo from './_components/logo';
+import { Suspense, useEffect, useState } from 'react';
+import AccessPrompt from '@/app/_components/AccessPrompt/access-prompt';
+import { getPurchasedTicketFromStorage } from '@/utils/ticketStorage';
+import TermsAndConditionsLink from './_components/terms-and-conditions-link';
+import { useRouter } from 'next/navigation';
+import PurchasedTicketPrompt from './_components/PurchasedTicketPrompt/purchased-ticket-prompt';
+import { isTicketFromToday } from '@/utils/date';
 
 export default function Home() {
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function Home() {
 
   const gotoPurchasedTicket = () => {
     router.push(
-      `/ticket?id=${savedTicket?.sessionId}&invoice=${savedTicket?.invoice}`,
+      `/ticket?id=${savedTicket?.sessionId}&invoice=${savedTicket?.invoice}`
     );
   };
 

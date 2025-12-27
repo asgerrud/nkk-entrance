@@ -2,7 +2,7 @@
 import {
   displayGuestClosingTime,
   displayMemberClosingTime,
-} from '@/utils/DateUtil';
+} from '@/utils/date';
 import TicketConfirmationQR from '../ticket-confirmation-qr';
 import { TicketType } from '@/types/enums/TicketType';
 import TicketConfirmationReceipt from '../ticket-confirmation-receipt';

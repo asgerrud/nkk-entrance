@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { clearSavedTicket } from "@/utils/ticketStorage";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { clearSavedTicket } from '@/utils/ticketStorage';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 interface TicketNotValidProps {
   invoice: string;
@@ -16,7 +16,7 @@ export default function TicketNotValid({ invoice }: TicketNotValidProps) {
   }, []);
 
   const goToHomeScreen = () => {
-    router.push("/");
+    router.push('/');
   };
 
   return (

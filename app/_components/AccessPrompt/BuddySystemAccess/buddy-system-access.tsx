@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { displayWeekdayPeakHours } from "@/utils/DateUtil";
-import { TicketType } from "@/types/enums/TicketType";
+import { useState } from 'react';
+import { displayWeekdayPeakHours } from '@/utils/date';
+import { TicketType } from '@/types/enums/TicketType';
 
 interface BuddySystemAccessProps {
   onRequestTicket: (ticketType: TicketType) => void;
