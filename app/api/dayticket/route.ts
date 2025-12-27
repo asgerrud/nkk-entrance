@@ -13,7 +13,7 @@ export function generateDayTicket() {
 
   const expiresAt = dayjs()
     .tz("Europe/Copenhagen")
-    .startOf('day')
+    .endOf('day')
     .toDate();
 
   const data = Buffer.alloc(12);
